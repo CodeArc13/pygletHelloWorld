@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>17f8ad49-6306-4fc5-9d87-c019dd416f6e</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>pygletHelloWorld.py</StartupFile>
+    <StartupFile>panZoomExample.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

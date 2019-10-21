@@ -3,8 +3,8 @@ from pyglet import clock
 from pyglet.window import mouse
 from pyglet.gl import *
 
-WIDTH = 640
-HEIGHT = 480
+width = 640
+height = 480
 YELLOW = 255, 255, 0, 255
 MIN_VECY = 200
 MAX_VECY = 400
@@ -18,15 +18,15 @@ conf = Config(sample_buffers=1,
                       samples=4,
                       depth_size=16,
                       double_buffer=True)
-window = pyglet.window.Window(width=WIDTH, height=HEIGHT, config=conf)
+window = pyglet.window.Window(width=width, height=height, config=conf)
 
 left   = 0
-right  = WIDTH
+right  = width
 bottom = 0
-top    = HEIGHT
+top    = height
 zoom_level = 1
-zoomed_width  = WIDTH
-zoomed_height = HEIGHT
+zoomed_width  = width
+zoomed_height = height
 #vecx = 20
 #vecy = 200
 #mousex = 0
@@ -68,7 +68,7 @@ label = pyglet.text.Label('Hello, world',
 @window.event
 def init_gl(width, height):
     # Set clear color
-    #glClearColor(0/255, 0/255, 0/255, 0/255)
+    glClearColor(0/255, 0/255, 0/255, 0/255)
 
     # Set antialiasing
     glEnable( GL_LINE_SMOOTH )
@@ -83,13 +83,13 @@ def init_gl(width, height):
     glViewport( 0, 0, width, height )
 
 @window.event
-def on_resize(width, height):
-    global WIDTH, HEIGHT
+def on_resize(w, h):
+    global width, height
     # Set window values
-    WIDTH  = width
-    HEIGHT = height
+    width  = w
+    height = h
     # Initialize OpenGL context
-    init_gl(width, height)
+    init_gl(w, h)
 
 @window.event
 def on_mouse_motion(x, y, dx, dy):
@@ -124,7 +124,7 @@ def on_mouse_press(x, y, button, modifiers):
 
 @window.event
 def on_mouse_scroll(x, y, dx, dy):
-    global zoom_level, ZOOM_IN_FACTOR, ZOOM_OUT_FACTOR, WIDTH, HEIGHT
+    global zoom_level, ZOOM_IN_FACTOR, ZOOM_OUT_FACTOR, width, height
     global left, right, bottom, top, zoomed_width, zoomed_height
     # Get scale factor
     f = ZOOM_IN_FACTOR if dy > 0 else ZOOM_OUT_FACTOR if dy < 0 else 1
@@ -132,8 +132,8 @@ def on_mouse_scroll(x, y, dx, dy):
     if .2 < zoom_level*f < 5:
         zoom_level *= f
 
-        mouse_x = x/WIDTH
-        mouse_y = y/HEIGHT
+        mouse_x = x/width
+        mouse_y = y/height
 
         mouse_x_in_world = left   + mouse_x*zoomed_width
         mouse_y_in_world = bottom + mouse_y*zoomed_height
@@ -164,9 +164,9 @@ def on_draw():
     # Save the default modelview matrix
     glPushMatrix()
     #global worldx, worldy
-    window.clear()    
+    #window.clear()    
     #glScalef(scale, scale, 0)
-    #pyglet.gl.glClear(pyglet.gl.GL_COLOR_BUFFER_BIT)
+    pyglet.gl.glClear(pyglet.gl.GL_COLOR_BUFFER_BIT)
     
     glOrtho( left, right, bottom, top, 1, -1 )
 

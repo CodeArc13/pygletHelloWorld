@@ -21,6 +21,10 @@ class App(pyglet.window.Window):
         self.fps_display.label.x = 5
         self.fps_display.label.y = self.height - 30
 
+        self.main_batch = pyglet.graphics.Batch()   
+        self.wireOff_image = pyglet.image.load('wireOff.png')
+        self.wireOff = pyglet.sprite.Sprite(self.wireOff_image, batch=self.main_batch)
+
 
         #Initialize camera values
         self.left   = 0
@@ -30,7 +34,7 @@ class App(pyglet.window.Window):
         self.zoom_level = 1
         self.zoomed_width  = width
         self.zoomed_height = height
-        
+        clock.schedule_interval(self.update, 1/60)
 
     def init_gl(self, width, height):
         # Set clear color
@@ -101,30 +105,17 @@ class App(pyglet.window.Window):
         # Set orthographic projection matrix
         glOrtho( self.left, self.right, self.bottom, self.top, 1, -1 )
 
-        # Draw quad
-        glBegin( GL_QUADS )
-        glColor3ub( 0xFF, 0, 0 )
-        glVertex2i( 10, 10 )
-
-        glColor3ub( 0xFF, 0xFF, 0 )
-        glVertex2i( 110, 10 )
-
-        glColor3ub( 0, 0xFF, 0 )
-        glVertex2i( 110, 110 )
-
-        glColor3ub( 0, 0, 0xFF )
-        glVertex2i( 10, 110 )
-        glEnd()
-
+        self.main_batch.draw()
         self.fps_display.draw()
         # Remove default modelview matrix
         glPopMatrix()
 
-    def update(dt):
-        pass
+    def update(self, dt):
+        print(dt)
 
     def run(self):
         pyglet.app.run()
 
 
 App(1024, 768).run()
+
