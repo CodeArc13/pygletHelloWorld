@@ -27,6 +27,9 @@
     <Compile Include="event1.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="arcadeGrids.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="panZoomExample.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
     <Compile Include="windowevents1.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="wireOffw.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
